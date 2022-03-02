@@ -1,13 +1,13 @@
 <div id="top"></div>
 
-![LinkedIn][linkedin-shield][linkedin-url]
+![LinkedIn][linkedin-shield]
 
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
+  <p align="center">
+    <img width="100" src="./images/tictactoe.png">
+  </p>
 
   <h3 align="center">Tic Tac Toe documentation</h3>
 
@@ -146,7 +146,3 @@ Project Link: [https://github.com/donghwipark/tic-tac-toe](https://github.com/do
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/donghwipark/
 [product-screenshot]: images/screenshot.png
-[input-name]: images/input-name.png
-[input-location]: images/input-location.png
-[computer-location]: images/computer-location.png
-[result]: images/result.png
