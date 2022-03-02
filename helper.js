@@ -11,3 +11,9 @@ module.exports.printBoard = (board) => {
 };
 
 module.exports.validateLocationInput = (board, input) => board[input.toUpperCase()] === input.toUpperCase();
+
+module.exports.setPlayers = (playerName) => {
+  const playerObj = { computer: ' X' };
+  playerObj[playerName] = ' O';
+  return playerObj;
+};

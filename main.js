@@ -1,4 +1,4 @@
-const { printBoard, validateLocationInput } = require('./helper');
+const { printBoard, validateLocationInput, setPlayers } = require('./helper');
 const readline = require('readline');
 
 const rl = readline.createInterface({
@@ -23,6 +23,7 @@ rl.question('Please input your name to start Tic Tac Toe\n', (name) => main(name
 
 const main = (playerName) => {
   console.log(`Welcome ${playerName} lets start the game with our Computer!\n`);
+  console.log(setPlayers(playerName), 'player name');
   printBoard(board);
   rl.setPrompt('Input your position\n');
   rl.prompt();
@@ -35,10 +36,10 @@ const main = (playerName) => {
     if (validateLocationInput(board, input)) {
       board[input.toUpperCase()] = ' O';
       printBoard(board);
-      console.log('Input string is already filled or wrong! Try again:');
+      console.log('Input your position:\n');
     } else {
       printBoard(board);
-      console.log('Input string is already filled or wrong! Try again:');
+      console.log('Input string is already filled or wrong! Try again:\n');
     }
   });
 };
