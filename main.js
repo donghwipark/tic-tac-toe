@@ -1,3 +1,4 @@
+const { printBoard } = require('./helper');
 const readline = require('readline');
 
 const rl = readline.createInterface({
@@ -5,12 +6,25 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 
-// Start with players input name
-rl.question('Please input your name to start Tic Tac Toe\n', (name) => game(name));
+const board = {
+  X1: 'X1',
+  X2: 'X2',
+  X3: 'X3',
+  Y1: 'Y1',
+  Y2: 'Y2',
+  Y3: 'Y3',
+  Z1: 'Z1',
+  Z2: 'Z2',
+  Z3: 'Z3',
+};
 
-const game = (playerName) => {
+// Start with players input name
+rl.question('Please input your name to start Tic Tac Toe\n', (name) => main(name));
+
+const main = (playerName) => {
   console.log(`Welcome ${playerName} lets start the game with our Computer!\n`);
-  rl.setPrompt('Input your position \n');
+  printBoard(board);
+  rl.setPrompt('Input your position\n');
   rl.prompt();
 
   rl.on('line', (input) => {
@@ -18,7 +32,7 @@ const game = (playerName) => {
       console.log('End the game');
       rl.close();
     } else {
-      console.log('\nPlease input your position to keep the game\n');
+      console.log('Please input your position to keep the game');
     }
   });
 };
