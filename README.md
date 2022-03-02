@@ -1,6 +1,6 @@
 <div id="top"></div>
 
-[![LinkedIn][linkedin-shield]][linkedin-url]
+![LinkedIn][linkedin-shield][linkedin-url]
 
 <!-- PROJECT LOGO -->
 <br />
@@ -19,7 +19,9 @@
 
 <!-- TABLE OF CONTENTS -->
 <details>
+  <br />
   <summary>Table of Contents</summary>
+  <br />
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
@@ -38,13 +40,17 @@
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
+    <br />
 
 <!-- ABOUT THE PROJECT -->
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]]
-
+<br />
+<p align="center">
+  <img width="600" src="./images/screenshot.png">
+</p>
+<br />
 This is the Tic Tac Toe game which can compete with Computer.
 
 Here's the features you can enjou:
@@ -64,6 +70,7 @@ Please read below and enjoy the game
 - [readline](https://nodejs.org/api/readline.html)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+    <br />
 
 <!-- GETTING STARTED -->
 
@@ -75,7 +82,7 @@ This is an example of how you can start the game
 
 You need to have Node JS installed in your local environment
 
-- npm
+- Node js
   ```sh
   sudo apt install nodejs
   ```
@@ -95,19 +102,32 @@ Instruction how to install the game
    ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+    <br />
 
 <!-- USAGE EXAMPLES -->
 
 ## Usage
 
 1. First input you name
-   [![Inputing name][input-name]]
+<p align="center">
+  <img width="600" src="./images/input-name.png">
+</p>
+
 2. Input your desired location on the board(Automatically change to Capital letter)
-   [![Inputing name][input-location]]
+<p align="center">
+  <img width="250" src="./images/input-location.png">
+</p>
+
 3. Wait till computer decide location
-   [![Inputing name][computer-location]]
+<p align="center">
+  <img width="250" src="./images/computer-location.png">
+</p>
+
 4. Result will show automatically. It will show who wins the game.
-[![Inputing name][result]]
+<p align="center">
+  <img width="300" src="./images/result.png">
+</p>
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- CONTACT -->
