@@ -100,17 +100,21 @@ Instruction how to install the game
 
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
+1. First input you name
+   [![Inputing name][input-name]]
+2. Input your desired location on the board(Automatically change to Capital letter)
+   [![Inputing name][input-location]]
+3. Wait till computer decide location
+   [![Inputing name][computer-location]]
+4. Result will show automatically. It will show who wins the game.
+[![Inputing name][result]]
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- CONTACT -->
 
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - donghwipark@gmail.com
+Your Name - donghwipark@gmail.com
 
 Project Link: [https://github.com/donghwipark/tic-tac-toe](https://github.com/donghwipark/tic-tac-toe)
 
@@ -122,3 +126,7 @@ Project Link: [https://github.com/donghwipark/tic-tac-toe](https://github.com/do
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/donghwipark/
 [product-screenshot]: images/screenshot.png
+[input-name]: images/input-name.png
+[input-location]: images/input-location.png
+[computer-location]: images/computer-location.png
+[result]: images/result.png
