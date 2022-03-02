@@ -108,7 +108,7 @@ Instruction how to install the game
 
 ## Usage
 
-1. First input you name
+1. First input your name
 <p align="center">
   <img width="600" src="./images/input-name.png">
 </p>
