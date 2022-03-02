@@ -9,3 +9,5 @@ module.exports.printBoard = (board) => {
     ${board.X3} | ${board.Y3} | ${board.Z3}
   `);
 };
+
+module.exports.validateLocationInput = (board, input) => board[input.toUpperCase()] === input.toUpperCase();

@@ -1,4 +1,4 @@
-const { printBoard } = require('./helper');
+const { printBoard, validateLocationInput } = require('./helper');
 const readline = require('readline');
 
 const rl = readline.createInterface({
@@ -26,13 +26,19 @@ const main = (playerName) => {
   printBoard(board);
   rl.setPrompt('Input your position\n');
   rl.prompt();
-
   rl.on('line', (input) => {
     if (input === 'end') {
       console.log('End the game');
       rl.close();
+    }
+
+    if (validateLocationInput(board, input)) {
+      board[input.toUpperCase()] = ' O';
+      printBoard(board);
+      console.log('Input string is already filled or wrong! Try again:');
     } else {
-      console.log('Please input your position to keep the game');
+      printBoard(board);
+      console.log('Input string is already filled or wrong! Try again:');
     }
   });
 };
