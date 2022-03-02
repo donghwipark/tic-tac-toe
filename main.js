@@ -19,7 +19,7 @@ const board = {
 // Start with players input name
 rl.question('Please input your name to start Tic Tac Toe\n', (name) => main(name));
 
-const main = (playerName) => {
+const main = async (playerName) => {
   console.log(`Welcome ${playerName} lets start the game with our Computer!\n`);
 
   // Vairables
@@ -27,9 +27,20 @@ const main = (playerName) => {
   let currentPlayer = playerName;
   let count = 0;
 
+  // Inner functions
+  const switchPlayerAfterAction = (playerName) => {
+    count++;
+    printBoard(board);
+    currentPlayer = currentPlayer === 'computer' ? playerName : 'computer';
+    rl.setPrompt("Computer's turn!");
+    rl.prompt();
+  };
+
   printBoard(board);
+  // First prompt
   rl.setPrompt(`Current player: ${currentPlayer}\nInput your position\n`);
   rl.prompt();
+
   rl.on('line', (input) => {
     console.log('Current player: ', currentPlayer, count);
     if (input === 'end') {
@@ -39,8 +50,18 @@ const main = (playerName) => {
     }
 
     if (validateLocationInput(board, input)) {
+      // Player's input
       board[input.toUpperCase()] = players[currentPlayer];
       switchPlayerAfterAction(playerName);
+
+      // Computer's input
+      let location = computerChooseRandomLocation(board);
+      board[location] = players[currentPlayer];
+
+      // Switch to Player and repeat
+      switchPlayerAfterAction(playerName);
+      rl.setPrompt(`Current player: ${currentPlayer}\nInput your position\n`);
+      rl.prompt();
     } else {
       printBoard(board);
       console.log('Input string is already filled or wrong! Try again:\n');
@@ -71,10 +92,8 @@ const setPlayers = (playerName) => {
   return playerObj;
 };
 
-const switchPlayerAfterAction = (currentPlayer, playerName) => {
-  count++;
-  printBoard(board);
-  currentPlayer === 'computer' ? playerName : 'computer';
-  rl.setPrompt("Computer's turn!");
-  rl.prompt();
+const computerChooseRandomLocation = (board) => {
+  const availableLocations = Object.keys(board).filter((key) => board[key] === board[board[key]]);
+  // return Random available location
+  return availableLocations[Math.floor(Math.random() * availableLocations.length)];
 };
