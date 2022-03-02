@@ -1,6 +1,4 @@
-const { printBoard, validateLocationInput, setPlayers } = require('./helper');
 const readline = require('readline');
-
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
@@ -23,23 +21,60 @@ rl.question('Please input your name to start Tic Tac Toe\n', (name) => main(name
 
 const main = (playerName) => {
   console.log(`Welcome ${playerName} lets start the game with our Computer!\n`);
-  console.log(setPlayers(playerName), 'player name');
+
+  // Vairables
+  let players = setPlayers(playerName);
+  let currentPlayer = playerName;
+  let count = 0;
+
   printBoard(board);
-  rl.setPrompt('Input your position\n');
+  rl.setPrompt(`Current player: ${currentPlayer}\nInput your position\n`);
   rl.prompt();
   rl.on('line', (input) => {
+    console.log('Current player: ', currentPlayer, count);
     if (input === 'end') {
       console.log('End the game');
       rl.close();
+      return;
     }
 
     if (validateLocationInput(board, input)) {
-      board[input.toUpperCase()] = ' O';
-      printBoard(board);
-      console.log('Input your position:\n');
+      board[input.toUpperCase()] = players[currentPlayer];
+      switchPlayerAfterAction(playerName);
     } else {
       printBoard(board);
       console.log('Input string is already filled or wrong! Try again:\n');
     }
   });
+};
+
+/**
+ * Helpers Functions
+ */
+const printBoard = (board) => {
+  console.log(`
+    ${board.X1} | ${board.Y1} | ${board.Z1}
+    ___|____|___
+       |    |  
+    ${board.X2} | ${board.Y2} | ${board.Z2}
+    ___|____|___
+       |    |  
+    ${board.X3} | ${board.Y3} | ${board.Z3}
+  `);
+};
+
+const validateLocationInput = (board, input) => board[input.toUpperCase()] === input.toUpperCase();
+
+const setPlayers = (playerName) => {
+  const playerObj = { computer: ' X' };
+  playerObj[playerName] = ' O';
+  return playerObj;
+};
+
+const switchPlayerAfterAction = (currentPlayer, playerName) => {
+  count++;
+  printBoard(board);
+  currentPlayer === 'computer' ? playerName : 'computer';
+  rl.setPrompt("Computer's turn!");
+  rl.prompt();
 };
