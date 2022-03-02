@@ -9,7 +9,7 @@
     <img width="100" src="./images/tictactoe.png">
   </p>
 
-  <h3 align="center">Tic Tac Toe documentation</h3>
+  <h3 align="center">Tic Tac Toe documentation by Donghwi Park!</h3>
 
   <p align="center">
     A reference for Tic Tac Toe game with Javascript!
