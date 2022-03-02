@@ -16,9 +16,14 @@ const board = {
   Z3: 'Z3',
 };
 
-// Start with players input name
+/**
+ * Starting of command line receiving player's name
+ */
 rl.question('Please input your name to start Tic Tac Toe\n', (name) => main(name));
 
+/**
+ * Main function
+ */
 const main = async (playerName) => {
   console.log(`Welcome ${playerName} lets start the game with our Computer!\n`);
 
@@ -32,45 +37,50 @@ const main = async (playerName) => {
     count++;
     printBoard(board);
     currentPlayer = currentPlayer === 'computer' ? playerName : 'computer';
-    rl.setPrompt("Computer's turn!");
-    rl.prompt();
   };
 
   printBoard(board);
   // First prompt
-  rl.setPrompt(`Current player: ${currentPlayer}\nInput your position\n`);
+  rl.setPrompt(`Current player: ${currentPlayer}\nInput your position: `);
   rl.prompt();
 
-  rl.on('line', (input) => {
-    console.log('Current player: ', currentPlayer, count);
-    if (input === 'end') {
-      console.log('End the game');
+  rl.on('line', async (input) => {
+    if (input === 'exit') {
+      console.log(`End the game, Bye ${playerName}!`);
       rl.close();
-      return;
-    }
-
-    if (validateLocationInput(board, input)) {
-      // Player's input
-      board[input.toUpperCase()] = players[currentPlayer];
-      switchPlayerAfterAction(playerName);
-
-      // Computer's input
-      let location = computerChooseRandomLocation(board);
-      board[location] = players[currentPlayer];
-
-      // Switch to Player and repeat
-      switchPlayerAfterAction(playerName);
-      rl.setPrompt(`Current player: ${currentPlayer}\nInput your position\n`);
-      rl.prompt();
     } else {
-      printBoard(board);
-      console.log('Input string is already filled or wrong! Try again:\n');
+      if (validateLocationInput(board, input)) {
+        // Player's input
+        board[input.toUpperCase()] = players[currentPlayer];
+        switchPlayerAfterAction(playerName);
+
+        if (!checkGameFinished(board, count, playerName)) {
+          // Computer's choice
+          console.log("Computer's turn\n");
+          let location = computerChooseRandomLocation(board);
+          board[location] = players[currentPlayer];
+
+          if (!checkGameFinished(board, count, playerName)) {
+            // Switch to Player and repeat
+            switchPlayerAfterAction(playerName);
+            rl.setPrompt(`It is your turn ${currentPlayer} ( O )!\nPlease input your position\n`);
+            rl.prompt();
+          } else {
+            rl.close();
+          }
+        } else {
+          rl.close();
+        }
+      } else {
+        printBoard(board);
+        console.log('Input string is already filled or wrong! Try again:\n');
+      }
     }
   });
 };
 
 /**
- * Helpers Functions
+ * Helper Functions
  */
 const printBoard = (board) => {
   console.log(`
@@ -80,7 +90,7 @@ const printBoard = (board) => {
     ${board.X2} | ${board.Y2} | ${board.Z2}
     ___|____|___
        |    |  
-    ${board.X3} | ${board.Y3} | ${board.Z3}
+    ${board.X3} | ${board.Y3} | ${board.Z3}\n
   `);
 };
 
@@ -96,4 +106,46 @@ const computerChooseRandomLocation = (board) => {
   const availableLocations = Object.keys(board).filter((key) => board[key] === board[board[key]]);
   // return Random available location
   return availableLocations[Math.floor(Math.random() * availableLocations.length)];
+};
+
+const checkGameFinished = (board, count, playerName) => {
+  if (count === 9) {
+    console.log('You and computer tied OTL, Please try again!');
+    return true;
+  } else {
+    const winningPattern = [
+      // Vertical
+      ['X1', 'X2', 'X3'],
+      ['Y1', 'Y2', 'Y3'],
+      ['Z1', 'Z2', 'Z3'],
+      // Horizontal
+      ['X1', 'Y1', 'Z1'],
+      ['X2', 'Y2', 'Z2'],
+      ['X3', 'Y3', 'Z3'],
+      // Diagonal
+      ['X1', 'Y2', 'Z3'],
+      ['X3', 'Y2', 'Z1'],
+    ];
+
+    let winner = '';
+    const result = winningPattern.filter((triad) => {
+      if (board[triad[0]] === board[triad[1]] && board[triad[1]] === board[triad[2]]) {
+        winner = board[triad[0]] === ' X' ? 'computer' : playerName;
+        return true;
+      } else {
+        return false;
+      }
+    }).length;
+
+    // Return result finsh, tie, not finished
+    if (result) {
+      if (winner === 'computer') {
+        printBoard(board);
+      }
+      console.log('The Winner of Tic Tac Toe is ' + winner + '!');
+      return true;
+    } else {
+      return false;
+    }
+  }
 };
