@@ -53,7 +53,7 @@
 <br />
 This is the Tic Tac Toe game which can compete with Computer.
 
-Here's the features you can enjou:
+Here's the features you can enjoy:
 
 - You can choose your name while playing
 - The result will be automatically showing up
