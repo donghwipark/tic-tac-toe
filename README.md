@@ -1,6 +1,6 @@
 <div id="top"></div>
 
-![LinkedIn][linkedin-shield]([linkedin-url])
+![LinkedIn][linkedin-shield][linkedin-url]
 
 <!-- PROJECT LOGO -->
 <br />
