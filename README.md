@@ -128,6 +128,21 @@ Instruction how to install the game
   <img width="300" src="./images/result.png">
 </p>
 
+5. Player win case
+<p align="center">
+  <img width="300" src="./videos/player_win.gif">
+</p>
+
+6. Computer win case
+<p align="center">
+  <img width="300" src="./videos/computer_win.gif">
+</p>
+
+7. Tied case
+<p align="center">
+  <img width="300" src="./videos/tied_game.gif">
+</p>
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- CONTACT -->
